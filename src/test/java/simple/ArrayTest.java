@@ -25,7 +25,7 @@ class ArrayTest {
     }
 
     @Test
-    void insert() {
+    void insertIntoExpandedArray() {
         items.insert(15);
         assertEquals(15, items.retrieveAt(4));
     }
