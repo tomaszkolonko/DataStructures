@@ -19,6 +19,11 @@ class ArrayTest {
     }
 
     @Test
+    void createZeroArray() {
+        assertThrows(IllegalArgumentException.class, () -> new Array(0));
+    }
+
+    @Test
     void retrieveAt() {
         assertEquals(11, items.retrieveAt(0));
         assertEquals(14, items.retrieveAt(3));
@@ -66,5 +71,39 @@ class ArrayTest {
         assertEquals(2, items.indexOf(13));
 
         assertEquals(-1, items.indexOf(100));
+    }
+
+    @Test
+    void max() {
+        items.insert(99);
+        items.insert(2);
+        items.insert(-99);
+
+        assertEquals(99, items.max());
+    }
+
+    @Test
+    void min() {
+        items.insert(99);
+        items.insert(2);
+        items.insert(-99);
+
+        assertEquals(-99, items.min());
+    }
+
+    @Test
+    void intersect() {
+        Array newArray = new Array(6);
+        newArray.insert(0);
+        newArray.insert(10);
+        newArray.insert(12);
+        newArray.insert(13);
+        newArray.insert(18);
+
+        Array resultOfIntersect = new Array(2);
+        resultOfIntersect.insert(12);
+        resultOfIntersect.insert(13);
+
+        assertEquals(resultOfIntersect, items.intersect(newArray));
     }
 }
