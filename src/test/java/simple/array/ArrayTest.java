@@ -1,6 +1,7 @@
-package simple;
+package simple.array;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ class ArrayTest {
     void insertIntoExpandedArray() {
         items.insert(15);
 
-        assertEquals(5, items.pointerToNextElement());
+        assertEquals(5, items.pointerToNextSpot());
         assertEquals(11, items.retrieveAt(0));
         assertEquals(12, items.retrieveAt(1));
         assertEquals(13, items.retrieveAt(2));
@@ -47,7 +48,7 @@ class ArrayTest {
     @Test
     void removeAt() {
         items.removeAt(3);
-        assertEquals(3, items.pointerToNextElement());
+        assertEquals(3, items.pointerToNextSpot());
 
         assertThrows(IllegalArgumentException.class, () -> items.removeAt(10));
         assertThrows(IllegalArgumentException.class, () -> items.removeAt(-1));
@@ -59,7 +60,7 @@ class ArrayTest {
         items.removeAt(3);
         assertEquals(4, items.size());
 
-        assertEquals(3, items.pointerToNextElement());
+        assertEquals(3, items.pointerToNextSpot());
         assertEquals(11, items.retrieveAt(0));
         assertEquals(12, items.retrieveAt(1));
         assertEquals(13, items.retrieveAt(2));

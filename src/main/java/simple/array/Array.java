@@ -1,4 +1,4 @@
-package simple;
+package simple.array;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -6,54 +6,54 @@ import java.util.Objects;
 public class Array {
 
     private int[] items;
-    private int pointer;
+    private int nextSpot;
 
     public Array(int initialSize) {
         if(initialSize <= 0) {
             throw new IllegalArgumentException("initialSize cannot be 0 or smaller");
         }
         items = new int[initialSize];
-        pointer = 0;
+        nextSpot = 0;
     }
 
-    public int retrieveAt(int index) {
+    public int retrieveAt(int index) { // O(1)
         checkBounds(index);
         return items[index];
     }
 
-    public void insert(int item) {
-        if(pointer == items.length-1) {
+    public void insert(int item) { // O(n)
+        if(nextSpot == items.length-1) {
             expandArray();
         }
 
-        items[pointer] = item;
-        pointer = pointer + 1;
+        items[nextSpot] = item;
+        nextSpot = nextSpot + 1;
     }
 
-    public void removeAt(int index) {
+    public void removeAt(int index) { // O(n)
         checkBounds(index);
 
         items[index] = 0;
-        for(int i = index; i < pointer; i++) {
+        for(int i = index; i < nextSpot; i++) {
             items[index] = items[index + 1];
         }
-        pointer = pointer - 1;
+        nextSpot = nextSpot - 1;
 
-        if(pointer <= (items.length/2)) {
+        if(nextSpot <= (items.length/2)) {
             shrinkArray();
         }
     }
 
-    public int pointerToNextElement() {
-        return pointer;
+    public int pointerToNextSpot() {
+        return nextSpot;
     }
 
     public int size() {
         return items.length;
     }
 
-    public int indexOf(int item) {
-        for(int i = 0; i < pointer; i++) {
+    public int indexOf(int item) { // O(n)
+        for(int i = 0; i < nextSpot; i++) {
             if(items[i] == item) {
                 return i;
             }
@@ -61,7 +61,7 @@ public class Array {
         return -1;
     }
 
-    public int max() {
+    public int max() { // O(n)
         int champion = items[0];
         for(int challenger : items) {
             if(challenger > champion) {
@@ -71,7 +71,7 @@ public class Array {
         return champion;
     }
 
-    public int min() {
+    public int min() { // O(n)
         int champion = items[0];
         for(int challenger : items) {
             if(challenger < champion) {
@@ -81,11 +81,11 @@ public class Array {
         return champion;
     }
 
-    public Array intersect(final Array otherArray) {
+    public Array intersect(final Array otherArray) { // O(n^2)
         Array resultOfIntersect = new Array(1);
 
-        for(int thisIndex = 0; thisIndex < this.pointer; thisIndex++) {
-            for(int otherIndex = 0; otherIndex < otherArray.pointer; otherIndex++) {
+        for(int thisIndex = 0; thisIndex < this.nextSpot; thisIndex++) {
+            for(int otherIndex = 0; otherIndex < otherArray.nextSpot; otherIndex++) {
                 if(otherArray.items[otherIndex] == this.items[thisIndex]) {
                     resultOfIntersect.insert(this.items[thisIndex]);
                 }
@@ -95,17 +95,17 @@ public class Array {
         return resultOfIntersect;
     }
 
-    public Array reversed() {
-        Array reversedArray = new Array(this.pointer);
+    public Array reversed() { // O(n)
+        Array reversedArray = new Array(this.nextSpot);
 
-        for(int index = pointer-1; index >= 0; index--) {
+        for(int index = nextSpot -1; index >= 0; index--) {
             reversedArray.insert(items[index]);
         }
         return reversedArray;
     }
 
-    public void insertAt(final int index, final int item) {
-        if(index > pointer || index < 0) {
+    public void insertAt(final int index, final int item) { // O(1)
+        if(index > nextSpot || index < 0) {
             throw new IllegalArgumentException("this index does not exist");
         }
 
@@ -123,7 +123,7 @@ public class Array {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(pointer);
+        int result = Objects.hash(nextSpot);
         result = 31 * result + Arrays.hashCode(items);
         return result;
     }
@@ -132,27 +132,27 @@ public class Array {
     public String toString() {
         return "Array{" +
             "items=" + Arrays.toString(items) +
-            ", pointer=" + pointer +
+            ", pointer=" + nextSpot +
             '}';
     }
 
     private void checkBounds(final int index) {
-        if(index < 0 || index > pointer) {
+        if(index < 0 || index > nextSpot) {
             throw new IllegalArgumentException("no item at this index");
         }
     }
 
-    private void expandArray() {
+    private void expandArray() { // O(n)
         int[] newArray = new int[items.length * 2];
-        for(int i = 0; i <= pointer; i++) {
+        for(int i = 0; i <= nextSpot; i++) {
             newArray[i] = items[i];
         }
         items = newArray;
     }
 
-    private void shrinkArray() {
+    private void shrinkArray() { // O(n)
         int[] newArray = new int[items.length / 2];
-        for(int i = 0; i <= pointer; i++) {
+        for(int i = 0; i <= nextSpot; i++) {
             newArray[i] = items[i];
         }
         items = newArray;
