@@ -18,8 +18,15 @@ Implement an Array datastructure with the following methods:
 - insertAt(int index, int item)
 - removeAt(int index)
 - indexOf(int item)
-- sizeOf()
+- size()
 - max()
 - min()
-- intersect()
-- reverse()
+- intersect(Array otherArray)
+- reversed()
+
+### LinkedList
+______________
+
+Implement a LinkedList with the following mehtods:
+
+- addLast()
