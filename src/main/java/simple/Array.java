@@ -95,6 +95,23 @@ public class Array {
         return resultOfIntersect;
     }
 
+    public Array reversed() {
+        Array reversedArray = new Array(this.pointer);
+
+        for(int index = pointer-1; index >= 0; index--) {
+            reversedArray.insert(items[index]);
+        }
+        return reversedArray;
+    }
+
+    public void insertAt(final int index, final int item) {
+        if(index > pointer || index < 0) {
+            throw new IllegalArgumentException("this index does not exist");
+        }
+
+        items[index] = item;
+    }
+
     @Override
     public boolean equals(final Object other) {
         return this == other || other instanceof Array && this.equals((Array) other);

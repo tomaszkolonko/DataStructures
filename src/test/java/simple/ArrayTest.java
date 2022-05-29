@@ -106,4 +106,28 @@ class ArrayTest {
 
         assertEquals(resultOfIntersect, items.intersect(newArray));
     }
+
+    @Test
+    void reversed() {
+        Array newArray = new Array(4);
+        newArray.insert(14);
+        newArray.insert(13);
+        newArray.insert(12);
+        newArray.insert(11);
+
+        assertEquals(newArray, items.reversed());
+    }
+
+    @Test
+    void insertAt() {
+        items.insertAt(2, 23);
+
+        assertEquals(23, items.retrieveAt(2));
+    }
+
+    @Test
+    void insertAtIllegalIndex() {
+        assertThrows(IllegalArgumentException.class, () -> items.insertAt(-2, 23));
+        assertThrows(IllegalArgumentException.class, () -> items.insertAt(22, 23));
+    }
 }
