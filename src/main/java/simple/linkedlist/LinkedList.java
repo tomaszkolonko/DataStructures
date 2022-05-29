@@ -1,40 +1,43 @@
 package simple.linkedlist;
 
 public class LinkedList {
+    private class Node {
+        private int value;
+        private Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
+    }
+
     private Node first;
     private Node last;
 
-    public LinkedList() {
-        first = new Node(Integer.MIN_VALUE, null);
-        last = new Node(Integer.MAX_VALUE, null);
-    }
-
     public void addLast(int value) {
-        Node node = new Node(value, null);
-        Node currentNode = first;
+        Node node = new Node(value);
 
-        if(first.getNextNode() == null) {
-            first.setNode(node);
-            last.setNode(node);
-            return;
+        if(first == null) {
+            first = last = node;
+        } else {
+            last.next = node;
+            last = node;
         }
-
-        while(currentNode.getNextNode() != null) {
-            currentNode = currentNode.getNextNode();
-        }
-
-        currentNode.setNode(node);
-        last.setNode(node);
     }
 
     public int getSize() {
         int counter = 0;
-        Node currentNode = first;
+        if(first == null) {
+            return counter;
+        }
 
-        while(currentNode.getNextNode() != null) {
-            currentNode = currentNode.getNextNode();
+        Node currentNode = first;
+        counter++;
+
+        while(currentNode.next != null) {
+            currentNode = currentNode.next;
             counter++;
         }
+
         return counter;
     }
 

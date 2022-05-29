@@ -15,6 +15,11 @@ class LinkedListTest {
     }
 
     @Test
+    void getSizeOfEmptyLinkedList() {
+        assertEquals(0, myLinkedList.getSize());
+    }
+
+    @Test
     void testAddLast() {
         myLinkedList.addLast(10);
         myLinkedList.addLast(20);
