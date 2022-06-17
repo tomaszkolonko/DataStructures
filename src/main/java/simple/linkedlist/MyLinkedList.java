@@ -55,17 +55,7 @@ public class MyLinkedList {
     }
 
     public boolean contains(final int value) {
-        Node currentNode = first;
-        if(currentNode.value == value) {
-            return true;
-        }
-        while(currentNode.next != null) {
-            currentNode = currentNode.next;
-            if(currentNode.value == value) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(value) != Integer.MIN_VALUE;
     }
 
     public int indexOf(final int value) {
