@@ -1,8 +1,8 @@
 package simple.linkedlist;
 
 public class MyLinkedList {
-    private class Node {
-        private int value;
+    private static class Node {
+        private final int value;
         private Node next;
 
         public Node(int value) {
@@ -21,6 +21,17 @@ public class MyLinkedList {
         } else {
             last.next = node;
             last = node;
+        }
+    }
+
+    public void addFirst(int value) {
+        Node node = new Node(value);
+
+        if(first == null) {
+            first = last = node;
+        } else {
+            node.next = first;
+            first = node;
         }
     }
 
@@ -52,8 +63,6 @@ public class MyLinkedList {
         result += currentNode.value + "]";
         return result;
     }
-
-    // addFirst
     // addLast
     // deleteFirst
     // deleteLast

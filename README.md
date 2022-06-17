@@ -27,6 +27,7 @@ Implement an Array datastructure with the following methods:
 ### LinkedList
 ______________
 
-Implement a LinkedList with the following mehtods:
+Implement a LinkedList with the following methods:
 
-- addLast()
+- addLast(int value)
+- addFirst(int value)
