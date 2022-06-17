@@ -33,3 +33,5 @@ Implement a LinkedList with the following methods:
 - addFirst(int value)
 - deleteFirst()
 - deleteLast()
+- contains(int value)
+- indexOf(int value)

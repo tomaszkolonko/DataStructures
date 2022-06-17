@@ -52,8 +52,46 @@ public class MyLinkedList {
         }
         last = previousNode;
         last.next = null;
-
     }
+
+    public boolean contains(final int value) {
+        Node currentNode = first;
+        if(currentNode.value == value) {
+            return true;
+        }
+        while(currentNode.next != null) {
+            currentNode = currentNode.next;
+            if(currentNode.value == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int indexOf(final int value) {
+        int index = 0;
+        Node currentNode = first;
+
+        if(currentNode != null && currentNode.value == value) {
+            return index;
+        }
+
+        while(currentNode.next != null) {
+            if(currentNode.value == value) {
+                return index;
+            }
+            index++;
+            currentNode = currentNode.next;
+        }
+
+        if(currentNode.value == value) {
+            return index;
+        }
+
+        return Integer.MIN_VALUE;
+    }
+
+
 
     public int getSize() {
         int counter = 0;
@@ -84,8 +122,5 @@ public class MyLinkedList {
         result += currentNode.value + "]";
         return result;
     }
-
-    // contains
-    // indexOf
 
 }

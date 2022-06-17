@@ -1,6 +1,8 @@
 package simple.linkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.LinkedList;
 import org.junit.jupiter.api.BeforeAll;
@@ -78,6 +80,24 @@ class MyLinkedListTest {
 
         assertEquals(4, myLinkedList.getSize());
         assertEquals(myLinkedList.toString(), actualList.toString());
+    }
+
+    @Test
+    void contains() {
+        createDefaultList();
+
+        assertTrue(myLinkedList.contains(20));
+        assertFalse(myLinkedList.contains(99));
+    }
+
+    @Test
+    void indexOf() {
+        createDefaultList();
+
+        assertEquals(0, myLinkedList.indexOf(10));
+        assertEquals(1, myLinkedList.indexOf(20));
+        assertEquals(3, myLinkedList.indexOf(40));
+        assertEquals(Integer.MIN_VALUE, myLinkedList.indexOf(99));
     }
 
     private void createDefaultList() {
