@@ -1,17 +1,19 @@
 package simple.linkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.LinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LinkedListTest {
+class MyLinkedListTest {
 
-    LinkedList myLinkedList;
+    MyLinkedList myLinkedList;
 
     @BeforeEach
     void setUp() {
-        myLinkedList = new LinkedList();
+        myLinkedList = new MyLinkedList();
     }
 
     @Test
@@ -25,7 +27,12 @@ class LinkedListTest {
         myLinkedList.addLast(20);
         myLinkedList.addLast(30);
 
-        assertEquals(3, myLinkedList.getSize());
-    }
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
 
+        assertEquals(3, myLinkedList.getSize());
+        assertEquals(myLinkedList.toString(), list.toString());
+    }
 }

@@ -3,12 +3,12 @@ package simple.array;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Array {
+public class MyArray {
 
     private int[] items;
     private int nextSpot;
 
-    public Array(int initialSize) {
+    public MyArray(int initialSize) {
         if(initialSize <= 0) {
             throw new IllegalArgumentException("initialSize cannot be 0 or smaller");
         }
@@ -81,12 +81,12 @@ public class Array {
         return champion;
     }
 
-    public Array intersect(final Array otherArray) { // O(n^2)
-        Array resultOfIntersect = new Array(1);
+    public MyArray intersect(final MyArray otherMyArray) { // O(n^2)
+        MyArray resultOfIntersect = new MyArray(1);
 
         for(int thisIndex = 0; thisIndex < this.nextSpot; thisIndex++) {
-            for(int otherIndex = 0; otherIndex < otherArray.nextSpot; otherIndex++) {
-                if(otherArray.items[otherIndex] == this.items[thisIndex]) {
+            for(int otherIndex = 0; otherIndex < otherMyArray.nextSpot; otherIndex++) {
+                if(otherMyArray.items[otherIndex] == this.items[thisIndex]) {
                     resultOfIntersect.insert(this.items[thisIndex]);
                 }
             }
@@ -95,13 +95,13 @@ public class Array {
         return resultOfIntersect;
     }
 
-    public Array reversed() { // O(n)
-        Array reversedArray = new Array(this.nextSpot);
+    public MyArray reversed() { // O(n)
+        MyArray reversedMyArray = new MyArray(this.nextSpot);
 
         for(int index = nextSpot -1; index >= 0; index--) {
-            reversedArray.insert(items[index]);
+            reversedMyArray.insert(items[index]);
         }
-        return reversedArray;
+        return reversedMyArray;
     }
 
     public void insertAt(final int index, final int item) { // O(1)
@@ -114,10 +114,10 @@ public class Array {
 
     @Override
     public boolean equals(final Object other) {
-        return this == other || other instanceof Array && this.equals((Array) other);
+        return this == other || other instanceof MyArray && this.equals((MyArray) other);
     }
 
-    private boolean equals(final Array other) {
+    private boolean equals(final MyArray other) {
         return items.length == other.items.length && Arrays.equals(items, other.items);
     }
 

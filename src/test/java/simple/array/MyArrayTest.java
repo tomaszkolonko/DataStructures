@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ArrayTest {
+class MyArrayTest {
 
-    Array items;
+    MyArray items;
 
     @BeforeEach
     void setUp() {
-        items = new Array(4);
+        items = new MyArray(4);
         items.insert(11);
         items.insert(12);
         items.insert(13);
@@ -21,7 +21,7 @@ class ArrayTest {
 
     @Test
     void createZeroArray() {
-        assertThrows(IllegalArgumentException.class, () -> new Array(0));
+        assertThrows(IllegalArgumentException.class, () -> new MyArray(0));
     }
 
     @Test
@@ -94,29 +94,29 @@ class ArrayTest {
 
     @Test
     void intersect() {
-        Array newArray = new Array(6);
-        newArray.insert(0);
-        newArray.insert(10);
-        newArray.insert(12);
-        newArray.insert(13);
-        newArray.insert(18);
+        MyArray newMyArray = new MyArray(6);
+        newMyArray.insert(0);
+        newMyArray.insert(10);
+        newMyArray.insert(12);
+        newMyArray.insert(13);
+        newMyArray.insert(18);
 
-        Array resultOfIntersect = new Array(2);
+        MyArray resultOfIntersect = new MyArray(2);
         resultOfIntersect.insert(12);
         resultOfIntersect.insert(13);
 
-        assertEquals(resultOfIntersect, items.intersect(newArray));
+        assertEquals(resultOfIntersect, items.intersect(newMyArray));
     }
 
     @Test
     void reversed() {
-        Array newArray = new Array(4);
-        newArray.insert(14);
-        newArray.insert(13);
-        newArray.insert(12);
-        newArray.insert(11);
+        MyArray newMyArray = new MyArray(4);
+        newMyArray.insert(14);
+        newMyArray.insert(13);
+        newMyArray.insert(12);
+        newMyArray.insert(11);
 
-        assertEquals(newArray, items.reversed());
+        assertEquals(newMyArray, items.reversed());
     }
 
     @Test

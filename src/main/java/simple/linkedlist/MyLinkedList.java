@@ -1,6 +1,6 @@
 package simple.linkedlist;
 
-public class LinkedList {
+public class MyLinkedList {
     private class Node {
         private int value;
         private Node next;
@@ -41,7 +41,17 @@ public class LinkedList {
         return counter;
     }
 
-
+    @Override
+    public String toString() {
+        String result = "[";
+        Node currentNode = first;
+        while(currentNode.next != null) {
+            result += currentNode.value + ", ";
+            currentNode = currentNode.next;
+        }
+        result += currentNode.value + "]";
+        return result;
+    }
 
     // addFirst
     // addLast
