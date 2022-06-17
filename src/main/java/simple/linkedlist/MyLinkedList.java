@@ -6,7 +6,7 @@ public class MyLinkedList {
         private final int value;
         private Node next;
 
-        public Node(int value) {
+        private Node(int value) {
             this.value = value;
         }
     }
@@ -17,7 +17,7 @@ public class MyLinkedList {
     public void addLast(int value) {
         Node node = new Node(value);
 
-        if(first == null) {
+        if(isEmpty()) {
             first = last = node;
         } else {
             last.next = node;
@@ -28,7 +28,7 @@ public class MyLinkedList {
     public void addFirst(int value) {
         Node node = new Node(value);
 
-        if(first == null) {
+        if(isEmpty()) {
             first = last = node;
         } else {
             node.next = first;
@@ -72,20 +72,12 @@ public class MyLinkedList {
         int index = 0;
         Node currentNode = first;
 
-        if(currentNode != null && currentNode.value == value) {
-            return index;
-        }
-
-        while(currentNode.next != null) {
+        while(currentNode != null) {
             if(currentNode.value == value) {
                 return index;
             }
-            index++;
             currentNode = currentNode.next;
-        }
-
-        if(currentNode.value == value) {
-            return index;
+            index++;
         }
 
         return Integer.MIN_VALUE;
@@ -95,7 +87,7 @@ public class MyLinkedList {
 
     public int getSize() {
         int counter = 0;
-        if(first == null) {
+        if(isEmpty()) {
             return counter;
         }
 
@@ -123,4 +115,7 @@ public class MyLinkedList {
         return result;
     }
 
+    private boolean isEmpty() {
+        return first == null;
+    }
 }

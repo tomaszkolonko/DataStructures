@@ -86,7 +86,8 @@ class MyLinkedListTest {
     void contains() {
         createDefaultList();
 
-        assertTrue(myLinkedList.contains(20));
+        assertTrue(myLinkedList.contains(10));
+        assertTrue(myLinkedList.contains(40));
         assertFalse(myLinkedList.contains(99));
     }
 
@@ -95,7 +96,6 @@ class MyLinkedListTest {
         createDefaultList();
 
         assertEquals(0, myLinkedList.indexOf(10));
-        assertEquals(1, myLinkedList.indexOf(20));
         assertEquals(3, myLinkedList.indexOf(40));
         assertEquals(Integer.MIN_VALUE, myLinkedList.indexOf(99));
     }
