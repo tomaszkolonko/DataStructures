@@ -31,3 +31,5 @@ Implement a LinkedList with the following methods:
 
 - addLast(int value)
 - addFirst(int value)
+- deleteFirst()
+- deleteLast()

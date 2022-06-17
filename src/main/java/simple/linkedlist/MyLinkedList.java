@@ -1,6 +1,7 @@
 package simple.linkedlist;
 
 public class MyLinkedList {
+
     private static class Node {
         private final int value;
         private Node next;
@@ -35,6 +36,25 @@ public class MyLinkedList {
         }
     }
 
+    public void deleteFirst() {
+        Node secondNode = first.next;
+        first.next = null;
+        first = secondNode;
+    }
+
+    public void deleteLast() {
+        Node currentNode = first;
+        Node previousNode = null;
+
+        while(currentNode.next != null) {
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        last = previousNode;
+        last.next = null;
+
+    }
+
     public int getSize() {
         int counter = 0;
         if(first == null) {
@@ -52,6 +72,7 @@ public class MyLinkedList {
         return counter;
     }
 
+
     @Override
     public String toString() {
         String result = "[";
@@ -63,9 +84,7 @@ public class MyLinkedList {
         result += currentNode.value + "]";
         return result;
     }
-    // addLast
-    // deleteFirst
-    // deleteLast
+
     // contains
     // indexOf
 

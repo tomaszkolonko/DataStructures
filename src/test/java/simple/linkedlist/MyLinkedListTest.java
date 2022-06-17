@@ -31,7 +31,7 @@ class MyLinkedListTest {
     }
 
     @Test
-    void testAddLast() {
+    void addLast() {
         myLinkedList.addLast(10);
         myLinkedList.addLast(20);
         myLinkedList.addLast(30);
@@ -42,7 +42,7 @@ class MyLinkedListTest {
     }
 
     @Test
-    void testAddFirst() {
+    void addFirst() {
         myLinkedList.addFirst(20);
         myLinkedList.addLast(30);
         myLinkedList.addLast(40);
@@ -50,6 +50,41 @@ class MyLinkedListTest {
 
         assertEquals(4, myLinkedList.getSize());
         assertEquals(myLinkedList.toString(), actualList.toString());
-
     }
+
+    @Test
+    void deleteFirst() {
+        createDefaultList();
+        myLinkedList.addFirst(5);
+
+        assertEquals(5, myLinkedList.getSize());
+        assertEquals(myLinkedList.toString(), "[5, 10, 20, 30, 40]");
+
+        myLinkedList.deleteFirst();
+
+        assertEquals(4, myLinkedList.getSize());
+        assertEquals(myLinkedList.toString(), actualList.toString());
+    }
+
+    @Test
+    void deleteLast() {
+        createDefaultList();
+        myLinkedList.addLast(99);
+
+        assertEquals(5, myLinkedList.getSize());
+        assertEquals(myLinkedList.toString(), "[10, 20, 30, 40, 99]");
+
+        myLinkedList.deleteLast();
+
+        assertEquals(4, myLinkedList.getSize());
+        assertEquals(myLinkedList.toString(), actualList.toString());
+    }
+
+    private void createDefaultList() {
+        myLinkedList.addFirst(10);
+        myLinkedList.addLast(20);
+        myLinkedList.addLast(30);
+        myLinkedList.addLast(40);
+    }
+
 }
