@@ -13,6 +13,7 @@ public class MyLinkedList {
 
     private Node first;
     private Node last;
+    private int size = 0;
 
     public void addLast(int value) {
         Node node = new Node(value);
@@ -23,6 +24,7 @@ public class MyLinkedList {
             last.next = node;
             last = node;
         }
+        size++;
     }
 
     public void addFirst(int value) {
@@ -34,15 +36,23 @@ public class MyLinkedList {
             node.next = first;
             first = node;
         }
+        size++;
     }
 
     public void deleteFirst() {
+        if(first == null) {
+            throw new IllegalArgumentException("Cannot delete from empty list");
+        }
         Node secondNode = first.next;
         first.next = null;
         first = secondNode;
+        size--;
     }
 
     public void deleteLast() {
+        if(first == null) {
+            throw new IllegalArgumentException("Cannot delete from empty list");
+        }
         Node currentNode = first;
         Node previousNode = null;
 
@@ -52,6 +62,7 @@ public class MyLinkedList {
         }
         last = previousNode;
         last.next = null;
+        size--;
     }
 
     public boolean contains(final int value) {
@@ -73,23 +84,8 @@ public class MyLinkedList {
         return Integer.MIN_VALUE;
     }
 
-
-
     public int getSize() {
-        int counter = 0;
-        if(isEmpty()) {
-            return counter;
-        }
-
-        Node currentNode = first;
-        counter++;
-
-        while(currentNode.next != null) {
-            currentNode = currentNode.next;
-            counter++;
-        }
-
-        return counter;
+        return size;
     }
 
 

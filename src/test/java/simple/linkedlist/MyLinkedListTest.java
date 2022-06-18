@@ -2,6 +2,7 @@ package simple.linkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.LinkedList;
@@ -98,6 +99,16 @@ class MyLinkedListTest {
         assertEquals(0, myLinkedList.indexOf(10));
         assertEquals(3, myLinkedList.indexOf(40));
         assertEquals(Integer.MIN_VALUE, myLinkedList.indexOf(99));
+    }
+
+    @Test
+    void removigTooManyItems() {
+        myLinkedList.addFirst(10);
+        assertEquals(1, myLinkedList.getSize());
+        myLinkedList.deleteFirst();
+        assertEquals(0, myLinkedList.getSize());
+        assertThrows(IllegalArgumentException.class, () -> myLinkedList.deleteFirst());
+        assertThrows(IllegalArgumentException.class, () -> myLinkedList.deleteLast());
     }
 
     private void createDefaultList() {
