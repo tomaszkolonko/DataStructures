@@ -1,5 +1,7 @@
 package simple.linkedlist;
 
+import simple.array.MyArray;
+
 public class MyLinkedList {
 
     private static class Node {
@@ -86,6 +88,32 @@ public class MyLinkedList {
 
     public int getSize() {
         return size;
+    }
+
+    public MyArray convertToMyArray() {
+        MyArray myArray = new MyArray(size);
+        Node currentNode = first;
+
+        while(currentNode != null) {
+            myArray.insert(currentNode.value);
+            currentNode = currentNode.next;
+        }
+
+        return myArray;
+    }
+
+    public int[] convertToArray() {
+        int[] array = new int[size];
+        int index = 0;
+        Node currentNode = first;
+
+        while(currentNode != null) {
+            array[index] = currentNode.value;
+            currentNode = currentNode.next;
+            index++;
+        }
+
+        return array;
     }
 
 

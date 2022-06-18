@@ -35,3 +35,4 @@ Implement a LinkedList with the following methods:
 - deleteLast()
 - contains(int value)
 - indexOf(int value)
+- convertToArray()

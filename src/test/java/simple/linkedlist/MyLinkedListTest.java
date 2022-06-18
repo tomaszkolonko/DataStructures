@@ -5,10 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import simple.array.MyArray;
 
 class MyLinkedListTest {
 
@@ -109,6 +112,23 @@ class MyLinkedListTest {
         assertEquals(0, myLinkedList.getSize());
         assertThrows(IllegalArgumentException.class, () -> myLinkedList.deleteFirst());
         assertThrows(IllegalArgumentException.class, () -> myLinkedList.deleteLast());
+    }
+
+    @Test
+    @Disabled
+    void convertToMyArray() {
+        createDefaultList();
+        MyArray myArray = myLinkedList.convertToMyArray();
+
+        assertEquals(actualList.toString(), myArray.toString());
+    }
+
+    @Test
+    void convertToArray() {
+        createDefaultList();
+        int[] array = myLinkedList.convertToArray();
+
+        assertEquals(actualList.toString(), Arrays.toString(array));
     }
 
     private void createDefaultList() {
