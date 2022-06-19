@@ -131,6 +131,21 @@ class MyLinkedListTest {
         assertEquals(actualList.toString(), Arrays.toString(array));
     }
 
+    @Test
+    void reverse() {
+        createDefaultList();
+
+        LinkedList<Integer> reversedList = new LinkedList<>();
+        reversedList.add(40);
+        reversedList.add(30);
+        reversedList.add(20);
+        reversedList.add(10);
+
+        myLinkedList.reverse();
+
+        assertEquals(reversedList.toString(), myLinkedList.toString());
+    }
+
     private void createDefaultList() {
         myLinkedList.addFirst(10);
         myLinkedList.addLast(20);

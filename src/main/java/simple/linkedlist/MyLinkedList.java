@@ -117,6 +117,37 @@ public class MyLinkedList {
     }
 
 
+    public void reverse() {
+        if(first == null) {
+            return;
+        }
+        Node currentNode = first;
+
+        Node previousNode;
+        Node nextNode = null;
+
+        if(currentNode.next != null) {
+            nextNode = currentNode.next;
+            currentNode.next = null; // without this one -> endless
+        }
+        last = currentNode;
+
+        while(nextNode.next != null) {
+            previousNode = currentNode;
+            currentNode = nextNode;
+            nextNode = nextNode.next;
+
+            currentNode.next = previousNode;
+        }
+
+        previousNode = currentNode;
+        currentNode = nextNode;
+
+        currentNode.next = previousNode;
+        first = nextNode;
+    }
+
+
     @Override
     public String toString() {
         String result = "[";

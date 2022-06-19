@@ -36,3 +36,4 @@ Implement a LinkedList with the following methods:
 - contains(int value)
 - indexOf(int value)
 - convertToArray()
+- reverse()
