@@ -118,38 +118,33 @@ public class MyLinkedList {
 
 
     public void reverse() {
-        if(first == null) {
+        if(first == null || first.next == null) {
             return;
         }
-        Node currentNode = first;
 
-        Node previousNode;
-        Node nextNode = null;
+        // reversing link direction
+        Node previousNode = first;
+        Node currentNode = first.next;
+        while(currentNode != null) {
+            var nextNode = currentNode.next;
+            currentNode.next = previousNode;
 
-        if(currentNode.next != null) {
-            nextNode = currentNode.next;
-            currentNode.next = null; // without this one -> endless
-        }
-        last = currentNode;
-
-        while(nextNode.next != null) {
             previousNode = currentNode;
             currentNode = nextNode;
-            nextNode = nextNode.next;
-
-            currentNode.next = previousNode;
         }
 
-        previousNode = currentNode;
-        currentNode = nextNode;
-
-        currentNode.next = previousNode;
-        first = nextNode;
+        // setting last and first
+        last = first;
+        last.next = null;
+        first = previousNode;
     }
 
 
     @Override
     public String toString() {
+        if(first == null) {
+            return "empty linked list, nothing to show...";
+        }
         String result = "[";
         Node currentNode = first;
         while(currentNode.next != null) {
