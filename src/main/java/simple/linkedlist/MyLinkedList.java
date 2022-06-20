@@ -139,6 +139,27 @@ public class MyLinkedList {
         first = previousNode;
     }
 
+    public int getKthFromTheEnd(final int kthElement) {
+        if(kthElement >= getSize() || kthElement < 0) {
+            throw new IllegalArgumentException("k-value needs to be one less then the size of the linked list");
+        }
+
+        Node pointerOne = first;
+        Node pointerTwo = first;
+
+        // create the right distance first
+        for(int i = 0; i <= kthElement-1; i++) {
+            pointerOne = pointerOne.next;
+        }
+
+        // then move both forward
+        while(pointerOne != last) {
+            pointerOne = pointerOne.next;
+            pointerTwo = pointerTwo.next;
+        }
+        return pointerTwo.value;
+    }
+
 
     @Override
     public String toString() {

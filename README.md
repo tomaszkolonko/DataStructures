@@ -37,3 +37,4 @@ Implement a LinkedList with the following methods:
 - indexOf(int value)
 - convertToArray()
 - reverse()
+- getKthFromTheEnd(int k)

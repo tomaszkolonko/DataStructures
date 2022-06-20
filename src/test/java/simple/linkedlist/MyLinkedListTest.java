@@ -146,6 +146,27 @@ class MyLinkedListTest {
         assertEquals(reversedList.toString(), myLinkedList.toString());
     }
 
+    @Test
+    void getKthFromTheEnd() {
+        createDefaultList();
+
+        int last = myLinkedList.getKthFromTheEnd(0);
+        assertEquals(40, last);
+
+        int oneFromTheEnd = myLinkedList.getKthFromTheEnd(1);
+        assertEquals(30, oneFromTheEnd);
+
+        int twoFromTheEnd = myLinkedList.getKthFromTheEnd(2);
+        assertEquals(20, twoFromTheEnd);
+
+        int threeFromTheEnd = myLinkedList.getKthFromTheEnd(3);
+        assertEquals(10, threeFromTheEnd);
+
+        assertThrows(IllegalArgumentException.class, () -> myLinkedList.getKthFromTheEnd(-1));
+        assertThrows(IllegalArgumentException.class, () -> myLinkedList.getKthFromTheEnd(4));
+
+    }
+
     private void createDefaultList() {
         myLinkedList.addFirst(10);
         myLinkedList.addLast(20);
