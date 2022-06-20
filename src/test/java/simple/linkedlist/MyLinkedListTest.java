@@ -164,7 +164,11 @@ class MyLinkedListTest {
 
         assertThrows(IllegalArgumentException.class, () -> myLinkedList.getKthFromTheEnd(-1));
         assertThrows(IllegalArgumentException.class, () -> myLinkedList.getKthFromTheEnd(4));
+    }
 
+    @Test
+    void getKthFromTheEndWithEmptyList() {
+        assertThrows(IllegalArgumentException.class, () -> myLinkedList.getKthFromTheEnd(2));
     }
 
     private void createDefaultList() {

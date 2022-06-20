@@ -118,7 +118,7 @@ public class MyLinkedList {
 
 
     public void reverse() {
-        if(first == null || first.next == null) {
+        if(isEmpty() || first.next == null) {
             return;
         }
 
@@ -140,6 +140,9 @@ public class MyLinkedList {
     }
 
     public int getKthFromTheEnd(final int kthElement) {
+        if(isEmpty()) {
+            throw new IllegalArgumentException("linked list is empty");
+        }
         if(kthElement >= getSize() || kthElement < 0) {
             throw new IllegalArgumentException("k-value needs to be one less then the size of the linked list");
         }
@@ -163,7 +166,7 @@ public class MyLinkedList {
 
     @Override
     public String toString() {
-        if(first == null) {
+        if(isEmpty()) {
             return "empty linked list, nothing to show...";
         }
         String result = "[";
